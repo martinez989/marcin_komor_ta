@@ -3,6 +3,18 @@ data "aws_availability_zones" "available" {
 }
 
 terraform {
+  required_version = ">= 1.8.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0" # Określ wersję providera Random
+    }
+  }
+
   backend "local" {}
   #  backend "s3" {
   #   bucket         = "ecs-state" 

@@ -70,11 +70,6 @@ variable "docker_image_name" {
   #  default     = "AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/your-app-repo:latest"
 }
 
-variable "acm_certificate_arn" {
-  description = "ARN of the certificate."
-  type        = string
-}
-
 variable "root_domain_name" {
   description = "Domain name for application"
   type        = string
