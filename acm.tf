@@ -7,7 +7,7 @@ resource "aws_route53_zone" "main" {
 }
 
 resource "aws_acm_certificate" "main" {
-  domain_name       = "${var.subdomain_name}.${var.root_domain_name}"
+  domain_name       = var.root_domain_name
   validation_method = "DNS"
   tags = {
     Name = "${var.project_name}-acm-cert"
@@ -43,7 +43,7 @@ resource "aws_acm_certificate_validation" "main" {
 
 resource "aws_route53_record" "alb_a_record" {
   zone_id = aws_route53_zone.main.zone_id
-  name    = "${var.subdomain_name}.${var.root_domain_name}"
+  name    = var.root_domain_name
   type    = "A"
 
   alias {

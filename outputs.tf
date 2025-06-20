@@ -20,7 +20,7 @@ output "rds_secret_arn" {
 
 output "alb_domain_cname" {
   description = "The full domain name assigned to the ALB"
-  value       = "${var.subdomain_name}.${var.root_domain_name}"
+  value       = var.root_domain_name
 }
 
 output "acm_certificate_arn" {
