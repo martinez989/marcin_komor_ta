@@ -16,8 +16,8 @@ resource "aws_cloudwatch_log_group" "ecs_logs" {
 }
 
 resource "aws_ecr_repository" "app_repo" {
-  name = split(":", split("/", var.docker_image_name)[1])[0]
-  image_tag_mutability = "IMMUTABLE" 
+  name                 = split(":", split("/", var.docker_image_name)[1])[0]
+  image_tag_mutability = "IMMUTABLE"
 
   image_scanning_configuration {
     scan_on_push = true
@@ -35,15 +35,15 @@ resource "aws_ecs_task_definition" "app" {
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
-  task_role_arn            = aws_iam_role.ecs_task_role.arn 
+  task_role_arn            = aws_iam_role.ecs_task_role.arn
 
   container_definitions = jsonencode([
     {
-      name        = "${var.project_name}-app"
-      image       = var.docker_image_name
-      cpu         = var.ecs_fargate_cpu
-      memory      = var.ecs_fargate_memory
-      essential   = true
+      name      = "${var.project_name}-app"
+      image     = var.docker_image_name
+      cpu       = var.ecs_fargate_cpu
+      memory    = var.ecs_fargate_memory
+      essential = true
       portMappings = [
         {
           containerPort = var.app_container_port
@@ -95,8 +95,8 @@ resource "aws_ecs_service" "app" {
   launch_type     = "FARGATE"
 
   network_configuration {
-    subnets         = [for s in aws_subnet.private : s.id]
-    security_groups = [aws_security_group.ecs_service.id]
+    subnets          = [for s in aws_subnet.private : s.id]
+    security_groups  = [aws_security_group.ecs_service.id]
     assign_public_ip = false
   }
 

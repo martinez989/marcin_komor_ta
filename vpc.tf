@@ -23,7 +23,7 @@ resource "aws_subnet" "public" {
 resource "aws_subnet" "private" {
   count             = 1
   vpc_id            = aws_vpc.main.id
-  cidr_block        = cidrsubnet(aws_vpc.main.cidr_block, 8, count.index + 2) 
+  cidr_block        = cidrsubnet(aws_vpc.main.cidr_block, 8, count.index + 2)
   availability_zone = data.aws_availability_zones.available.names[count.index]
 
   tags = {
@@ -41,7 +41,7 @@ resource "aws_internet_gateway" "main" {
 
 resource "aws_eip" "nat_gateway_eip" {
   count = 1
-  vpc   = true 
+  vpc   = true
 
   tags = {
     Name = "${var.project_name}-nat-eip-${count.index + 1}"
@@ -77,7 +77,7 @@ resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.main[count.index].id
   }
 

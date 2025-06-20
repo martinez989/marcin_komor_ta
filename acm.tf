@@ -13,16 +13,16 @@ resource "aws_acm_certificate" "main" {
     Name = "${var.project_name}-acm-cert"
   }
   lifecycle {
-    create_before_destroy = true 
+    create_before_destroy = true
   }
 }
 
 resource "aws_route53_record" "acm_validation" {
   for_each = {
     for dvo in aws_acm_certificate.main.domain_validation_options : dvo.domain_name => {
-      name   = dvo.resource_record_name
-      type   = dvo.resource_record_type
-      value  = dvo.resource_record_value
+      name    = dvo.resource_record_name
+      type    = dvo.resource_record_type
+      value   = dvo.resource_record_value
       zone_id = aws_route53_zone.main.zone_id
     }
   }
@@ -47,7 +47,7 @@ resource "aws_route53_record" "alb_a_record" {
   type    = "A"
 
   alias {
-    name                   = aws_lb.app.dns_name 
+    name                   = aws_lb.app.dns_name
     zone_id                = aws_lb.app.zone_id
     evaluate_target_health = true
   }

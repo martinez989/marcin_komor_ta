@@ -67,8 +67,7 @@ variable "desired_ecs_tasks" {
 variable "docker_image_name" {
   description = "Name of the Docker image"
   type        = string
-  default     = 
-#  default     = "AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/your-app-repo:latest"
+  #  default     = "AWS_ACCOUNT_ID.dkr.ecr.eu-west-1.amazonaws.com/your-app-repo:latest"
 }
 
 variable "acm_certificate_arn" {
