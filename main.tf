@@ -3,7 +3,7 @@ data "aws_availability_zones" "available" {
 }
 
 terraform {
-    backend "local" {}
+  backend "local" {}
   #  backend "s3" {
   #   bucket         = "ecs-state" 
   #    key            = "ecs/terraform.tfstate"
