@@ -27,9 +27,9 @@ resource "random_password" "rds_password" {
 }
 
 resource "aws_db_instance" "main" {
-  allocated_storage           = 20
+  allocated_storage           = 10
   engine                      = "postgres"
-  engine_version              = "15.5"
+  engine_version              = "17.5"
   instance_class              = var.rds_instance_class
   db_name                     = var.rds_db_name
   username                    = var.rds_master_username
