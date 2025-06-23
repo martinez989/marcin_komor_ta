@@ -37,3 +37,8 @@ output "acm_certificate_arn" {
   description = "The ARN of the validated ACM certificate"
   value       = aws_acm_certificate_validation.main.certificate_arn
 }
+
+output "project_name" {
+  description = "Project name used for resources."
+  value       = var.project_name
+}

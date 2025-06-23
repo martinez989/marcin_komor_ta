@@ -123,15 +123,6 @@ jobs:
         id: init_deploy
         run: terraform init
 
-      - name: Get Terraform Outputs
-        id: get_outputs_deploy
-        run: |
-          echo "ECS_CLUSTER_NAME=$(terraform output -raw ecs_cluster_name)" >> $GITHUB_ENV
-          echo "ECS_SERVICE_NAME=$(terraform output -raw ecs_service_name)" >> $GITHUB_ENV
-          echo "CONTAINER_APP_NAME=$(terraform output -raw project_name)-app" >> $GITHUB_ENV
-        env:
-          TF_INPUT: "false"
-
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color -out=tfplan
@@ -150,6 +141,15 @@ jobs:
         run: |
           echo "Applying Terraform plan..."
 #          terraform apply -auto-approve tfplan
+        env:
+          TF_INPUT: "false"
+
+      - name: Get Terraform Outputs
+        id: get_outputs_deploy
+        run: |
+          echo "ECS_CLUSTER_NAME=$(terraform output -raw ecs_cluster_name)" >> $GITHUB_ENV
+          echo "ECS_SERVICE_NAME=$(terraform output -raw ecs_service_name)" >> $GITHUB_ENV
+          echo "CONTAINER_APP_NAME=$(terraform output -raw project_name)-app" >> $GITHUB_ENV
         env:
           TF_INPUT: "false"
 
