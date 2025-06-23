@@ -3,7 +3,7 @@ DevOps Engineer TA
 
 ## Requirements
 - AWS account access with permissions for provisioning required services
-- AWS Certificate Manager - Create Certificate in eu-west-1
+- AWS Certificate Manager - Create Certificate in eu-central-1
 
 ## Features
 - Application Load Balancer facing internet with SSL termination
@@ -121,7 +121,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_allowed_source_cidrs"></a> [allowed\_source\_cidrs](#input\_allowed\_source\_cidrs) | CIDR blocks allowed to access the application | `list(string)` | <pre>[<br/>  "75.2.60.0/24"<br/>]</pre> | no |
 | <a name="input_app_container_port"></a> [app\_container\_port](#input\_app\_container\_port) | Port on which container listens on | `number` | `8080` | no |
-| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"eu-west-1"` | no |
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS region | `string` | `"eu-central-1"` | no |
 | <a name="input_desired_ecs_tasks"></a> [desired\_ecs\_tasks](#input\_desired\_ecs\_tasks) | Number of desired ECS tasks. | `number` | `1` | no |
 | <a name="input_docker_image_name"></a> [docker\_image\_name](#input\_docker\_image\_name) | Name of the Docker image | `string` | `"app-repo"` | no |
 | <a name="input_ecs_fargate_cpu"></a> [ecs\_fargate\_cpu](#input\_ecs\_fargate\_cpu) | CPU units for ECS Fargate tasks | `number` | `256` | no |
