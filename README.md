@@ -53,6 +53,7 @@ architecture-beta
 - Adjust log management in CloudWatch (longer retention?)
 - Scaling (AZ, Region)
 
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
