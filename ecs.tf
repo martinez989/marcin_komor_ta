@@ -16,7 +16,7 @@ resource "aws_cloudwatch_log_group" "ecs_logs" {
 }
 
 resource "aws_ecr_repository" "app_repo" {
-  name                 = split(":", split("/", var.docker_image_name)[1])[0]
+  name                 = var.ecr_repository_name
   image_tag_mutability = "IMMUTABLE"
 
   image_scanning_configuration {
