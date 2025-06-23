@@ -37,7 +37,7 @@ variable "rds_master_username" {
 variable "rds_db_name" {
   description = "Name of PostgreSQL database"
   type        = string
-  default     = "sonalake-rest"
+  default     = "app-rest"
 }
 
 variable "rds_instance_class" {
@@ -66,6 +66,12 @@ variable "desired_ecs_tasks" {
 
 variable "docker_image_name" {
   description = "Name of the Docker image"
+  type        = string
+  default     = "app-repo"
+}
+
+variable "ecr_repository_name" {
+  description = "ECR repository"
   type        = string
   default     = "app-repo"
 }
