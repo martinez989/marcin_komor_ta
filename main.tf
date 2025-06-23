@@ -6,7 +6,7 @@ terraform {
   required_version = ">= 1.8.0"
   required_providers {
     aws = {
-      source  = "hashicorp/aws"s
+      source  = "hashicorp/aws"
       version = "~> 5.0"
     }
     random = {
@@ -14,7 +14,7 @@ terraform {
       version = "~> 3.0"
     }
   }
-  
+
   backend "local" {}
   #  backend "s3" {
   #   bucket         = "ecs-state" 

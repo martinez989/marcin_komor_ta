@@ -40,7 +40,7 @@ resource "aws_ecs_task_definition" "app" {
   container_definitions = jsonencode([
     {
       name      = "${var.project_name}-app"
-      image     = var.docker_image_name
+      image     = "${aws_ecr_repository.app_repo.repository_url}:latest"
       cpu       = var.ecs_fargate_cpu
       memory    = var.ecs_fargate_memory
       essential = true
@@ -63,6 +63,10 @@ resource "aws_ecs_task_definition" "app" {
         {
           name  = "DB_USER"
           value = var.rds_master_username
+        },
+        {
+          name  = "DB_NAME"
+          value = var.rds_db_name
         }
       ]
       secrets = [
