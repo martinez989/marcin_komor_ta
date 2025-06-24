@@ -12,6 +12,11 @@ DevOps Engineer TA
 - RDS Postgres Database 
 - Basic logging with 7 day retention
 - Security Groups for ALB, ECS and RDS
+- CI/CD process with approvals on critical stages:
+    * testing code, 
+    * container build, 
+    * deploy AWS infrastructure, 
+    * deploy app
 - Single region hosted resources (Costs vs Resiliency)
 
 ## Changelog
@@ -23,7 +28,7 @@ graph TD
     A[Jumphost] --> B[Commit to Git] --> C[GitHub Action]
     C[Tests] --> C1{Success}
     C --> C2{Fail} --> A>Fix errors]
-    C1 --> E[Build infrastructure] --> F[Deploy to AWS] --> G[Open endpoint]
+    C1 --> E[Build images, push to ECR] --> D{Approve Terraform Plan} --> E1[Build infrastructure] --> F[Deploy to AWS] --> G[Open endpoint]
 
 ```
 
